@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html ng-app="calcultor">
+<head>
+  <title>计算器</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <style type="text/css">
+    body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+  </style>
+</head>
+<body ng-controller="maincontroller">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <form class="form-signin" role="form">
+          <h5 class="form-signin-heading">式神功击</h5>
+          <input type="text" class="form-control" placeholder="式神功击" ng-model="attack" required autofocus></form>
+      </div>
+      <div class="col-md-2">
+        <form class="form-signin" role="form">
+          <h5 class="form-signin-heading">式神暴击率(小数点)</h5>
+          <input type="text" class="form-control" placeholder="式神暴击率(小数点)" ng-model="boom" required autofocus></form>
+      </div>
+      <div class="col-md-2">
+        <form class="form-signin" role="form">
+          <h5 class="form-signin-heading">功击次数</h5>
+          <input type="text" class="form-control" placeholder="功击次数" ng-model="count" required autofocus></form>
+      </div>
+      <div class="col-md-2">
+        <form class="form-signin" role="form">
+          <h5 class="form-signin-heading">Boss防御</h5>
+          <input type="text" class="form-control" placeholder="Boss防御" ng-model="protect" required autofocus></form>
+      </div>
+      <div class="col-md-2">
+        <form class="form-signin" role="form">
+          <h5 class="form-signin-heading">Boss血量比(100为满血)</h5>
+          <input type="text" class="form-control" placeholder="Boss血量比例" ng-model="bosspercent" required autofocus></form>
+      </div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" style="width:50%;margin: 0 auto;margin-top: 100px" ng-click="calulator()" type="submit">计算</button>
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <h2 class="form-signin-heading">针女</h2>
+        <h4>理论总伤害:{{zhennvall|number:2}}</h4>
+        <h4>实际总伤害:{{zhennvlist|getall|number:2}}</h4>
+
+      </div>
+      <div class="col-md-3">
+        <h2 class="form-signin-heading">网切</h2>
+        <h4>理论总伤害:{{wangqieall|number:2}}</h4>
+        <h4>实际总伤害:{{wangqielist|getall|number:2}}</h4>
+
+      </div>
+      <div class="col-md-3">
+        <h2 class="form-signin-heading">心眼</h2>
+        <h4>理论总伤害:{{xinyanall|number:2}}</h4>
+        <h4>实际总伤害:{{xinyanlist|getall|number:2}}</h4>
+
+      </div>
+      <div class="col-md-3">
+        <h2 class="form-signin-heading">破势</h2>
+        <h4>理论总伤害:{{poshiall|number:2}}</h4>
+        <h4>实际总伤害:{{poshilist|getall|number:2}}</h4>
+
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-3">
+        <table class="table table-striped">
+          <tr>
+            <th>次数</th>
+            <th>伤害</th>
+          </tr>
+          <tr ng-repeat="x in zhennvlist track by $index">
+            <td>第{{$index+1}}次攻击</td>
+            <td ng-bind="x"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <table class="table table-striped">
+          <tr>
+            <th>次数</th>
+            <th>伤害</th>
+          </tr>
+          <tr ng-repeat="x in wangqielist track by $index">
+            <td>第{{$index+1}}次攻击</td>
+            <td ng-bind="x"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <table class="table table-striped">
+          <tr>
+            <th>次数</th>
+            <th>伤害</th>
+          </tr>
+          <tr ng-repeat="x in xinyanlist track by $index">
+            <td>第{{$index+1}}次攻击</td>
+            <td ng-bind="x"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <table class="table table-striped">
+          <tr>
+            <th>次数</th>
+            <th>伤害</th>
+          </tr>
+          <tr ng-repeat="x in poshilist track by $index">
+            <td>第{{$index+1}}次攻击</td>
+            <td ng-bind="x"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- /container -->
+</body>
+</html>
