@@ -18,6 +18,13 @@ function maincontroller($scope, $rootScope) {
 		$scope.xinyanlist = alldata.XinYanRealTimeResult;
 		$scope.poshiall = alldata.PoShiCommonResult;
 		$scope.poshilist = alldata.PoShiRealTimeResult;
+		var xaxis=[];
+		var content=0;
+		for (var i = 1; i <= $scope.count; i++) {
+			content=i;
+            xaxis.push(content);
+		}
+		DrawChart(alldata.ZhenNvRealTimeResult,alldata.WangQieRealTimeResult,alldata.XinYanRealTimeResult,alldata.PoShiRealTimeResult,xaxis);
 	}
 }
 var app = angular.module("calcultor", []);
@@ -165,3 +172,43 @@ function main(Attack, Boom, Protect, Count, BossPercent) {
 		}
 	})();
 }
+function DrawChart(arg1,arg2,arg3,arg4,x) {
+     $('#chart').highcharts({
+        chart: {
+            type: 'line',
+            backgroundColor:'transparent'
+        },
+        title: {
+            text: '伤害曲线'
+        },
+        xAxis: {
+            categories: x
+        },
+        yAxis: {
+            title: {
+                text: '伤害'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: '针女',
+            data: arg1
+        }, {
+            name: '网切',
+            data: arg2
+        }, {
+            name: '心眼',
+            data: arg3
+        }, {
+            name: '破势',
+            data: arg4
+        }]
+    });
+};

@@ -6,6 +6,7 @@
   <script type="text/javascript" src="js/angular.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/highchart.js"></script>
   <style type="text/css">
     body {
   padding-top: 40px;
@@ -70,6 +71,9 @@
         <h4>实际总伤害:{{poshilist|getall|number:2}}</h4>
 
       </div>
+    </div>
+    <div class="col-md-12">
+      <div id="chart"></div>
     </div>
     <div class="col-md-12">
       <div class="col-md-3">
